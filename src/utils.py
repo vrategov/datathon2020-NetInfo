@@ -47,7 +47,6 @@ def User_item_score(user, df, mat, neighbours,similarity):
         c = mat.loc[:,item]
         d = c[c.index.isin(a)]
         f = d[d.notnull()]
-        #avg_user = df.loc[df['userId'] == user,'rating'].values[0]
         index = f.index.values.squeeze().tolist()
         corr = similarity.loc[user,index]
         fin = pd.concat([f, corr], axis=1)
