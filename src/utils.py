@@ -16,3 +16,10 @@ def calc_freshness(data):
     del df['diff']
     df.reset_index(inplace=True, drop=True)
     return df
+
+def take_first_click(data):
+    df = data.copy()
+    df.sort_values(by=['visitor', 'pageTitle', 'time'], inplace=True)
+    df.reset_index(drop=True, inplace=True)
+    df = df.groupby(['visitor', 'pageTitle']).first().reset_index()
+    return df
